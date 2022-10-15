@@ -12,14 +12,43 @@
     background-color: white;
     border: 2px solid #708695;
     border-radius: 5px;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+#message-view li{
+    padding: 5px;
+    font-weight: 500;
+}
+
+#message-view li #author{
+    color: #4744AB;
+    font-weight: 600;
 }
 
 #emoji-bar{
-    height: 40px;
     background-color: #D4E6F0;
     border: 2px solid #516D88;
     border-radius: 5px;
     margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}
+
+#emoji-bar a{
+    margin: 0px;
+    padding: 0px;
+    margin-right: 5px;
+    height: 50px;
+}
+
+#emoji-bar img{
+    height: 50px;
+    margin: 0px;
+    border-radius: 5px;
 }
 
 #message-input{
