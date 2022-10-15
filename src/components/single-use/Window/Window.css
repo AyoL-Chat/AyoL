@@ -22,6 +22,8 @@
     margin: 0px;
 }
 
+
+
 #taskbar #label img{
     height: 25px;
     margin: 0px;
@@ -43,6 +45,7 @@
     border: 3px solid #716464;
     border-radius: 5px;
     cursor: pointer;
+    padding: 0px;
 }
 
 #main{

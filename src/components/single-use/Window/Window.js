@@ -10,7 +10,7 @@ const Window = () => {
                     <img src="./logo.png" alt="logo"></img>
                     <h3>AyoL Chat</h3>
                 </div>
-                <button id="close">X</button>
+                <button id="close" onClick={() => {window.location.href = "/";}}>X</button>
             </div>
             <div id="main">
                 <ChatBox/>
