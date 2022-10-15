@@ -1,0 +1,50 @@
+
+#window{
+    background-color: #D5E5F4;
+    border: 5px solid #295163;
+    border-radius: 5px;
+    box-shadow: 15px 15px 10px rgb(41, 81, 99, 0.25);
+}
+
+#taskbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #A5BDD5;
+    padding: 15px;
+}
+
+#taskbar #label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+#taskbar #label img{
+    height: 25px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+#taskbar #label h3{
+    font-size: 18px;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+#taskbar #close{
+    background-color: #E2867E;
+    width: 50px;
+    text-align: center;
+    font-weight: 400;
+    color: white;
+    border: 3px solid #716464;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#main{
+    padding: 5px;
+}

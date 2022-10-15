@@ -1,9 +1,12 @@
-import WelcomeScreen from "./screens/WelcomeScreen";
+//import WelcomeScreen from "./screens/WelcomeScreen/WeclomeScreen";
+import MainScreen from "./screens/MainScreen/MainScreen";
+
 
 function App() {
   return (
     <div className="App">
-      <WelcomeScreen/>
+      {/*<WelcomeScreen/>*/}
+      <MainScreen/>
     </div>
   );
 }

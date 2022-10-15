@@ -1,5 +1,5 @@
 import "./WelcomeScreen.css";
-import Button from "../components/multi-use/Button/Button";
+import Button from "../../components/multi-use/Button/Button";
 
 const WelcomeScreen = () => {
     return (
