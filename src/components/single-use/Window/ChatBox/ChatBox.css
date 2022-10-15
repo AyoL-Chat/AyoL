@@ -38,9 +38,12 @@
     padding: 5px;
 }
 
-#emoji-bar a{
+#emoji-bar button{
     margin: 0px;
     padding: 0px;
+    border: none;
+    background: none;
+    cursor: pointer;
     margin-right: 5px;
     height: 50px;
 }
@@ -77,4 +80,5 @@
     background-color: #A5D9EE;
     border: 2px solid #5B93B4;
     border-radius: 5px;
+    cursor: pointer;
 }

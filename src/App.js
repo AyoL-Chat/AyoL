@@ -1,13 +1,26 @@
-//import WelcomeScreen from "./screens/WelcomeScreen/WeclomeScreen";
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
+import WelcomeScreen from "./screens/WelcomeScreen/WelcomeScreen";
 import MainScreen from "./screens/MainScreen/MainScreen";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <WelcomeScreen/>
+  },
+  {
+    path: "/chat",
+    element: <MainScreen/>
+  }
+]);
 
-function App() {
+const App = () => {
+
+  
   return (
-    <div className="App">
-      {/*<WelcomeScreen/>*/}
-      <MainScreen/>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 

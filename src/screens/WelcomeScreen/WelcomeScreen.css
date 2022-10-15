@@ -1,9 +1,6 @@
 
-body{
-    background-color: #00A8FF;
-}
-
 #welcome-screen{
+    background-color: #00A8FF;
     height: 100vh;
     display: flex;
     flex-direction: column;
