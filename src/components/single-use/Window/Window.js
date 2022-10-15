@@ -1,8 +1,12 @@
 import "./Window.css";
 import SideMenu from "./SideMenu/SideMenu";
 import ChatBox from "./ChatBox/ChatBox";
+import { useEffect, useState } from "react";
 
 const Window = () => {
+    // let password = '123456789';
+    // const [username, setUsername] = useState('')
+
     return (
         <div id="window">
             <div id="taskbar">
