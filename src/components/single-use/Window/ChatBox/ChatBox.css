@@ -79,6 +79,8 @@
     margin-left: 5px;
     background-color: #A5D9EE;
     border: 2px solid #5B93B4;
+    color: black;
+    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
 }
