@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import {  useState } from 'react';
+import GUN from 'gun';
+import 'gun/sea';
+import 'axe.js'
+
+// Global State Username
+const [username, setUsername] = useState('')
+
+
+// Code for GUN.js, user auth
+export const db = GUN();
+
+export const user = db.user().recall({sessionStorage: true});
+
+user.get('alias').on((v) => setUsername(v))
+
+db.on('auth', async(event) => {
+
+})
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
