@@ -5,6 +5,7 @@ import {
 import WelcomeScreen from "./screens/WelcomeScreen/WelcomeScreen";
 import MainScreen from "./screens/MainScreen/MainScreen";
 
+/*
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,13 +16,14 @@ const router = createBrowserRouter([
     element: <MainScreen/>
   }
 ]);
-
-
+*/
 
 const App = () => {
   return (
+    <MainScreen/>
+  );/*(
     <RouterProvider router={router} />
-  );
+  );*/
 }
 
 export default App;

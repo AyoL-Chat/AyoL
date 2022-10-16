@@ -5,7 +5,8 @@ import "./ChatBox.css";
 // initialize gun locally
 const gun = GUN({
     peers: [
-      'http://localhost:3000/gun'
+      "http://localhost:3000/gun",
+      "https://ayo-chat.github.io"
     ]
   })
   
