@@ -3,7 +3,11 @@ import { useEffect, useState, useReducer } from "react";
 import "./ChatBox.css";
 
 // initialize gun locally
-const gun = GUN()
+const gun = GUN({
+    peers: [
+      "http://localhost:3030/gun"
+    ]
+  })
   
   // create the initial state to hold the messages
   const initialState = {
