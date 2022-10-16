@@ -30,6 +30,10 @@
     font-weight: 600;
 }
 
+#message-view li img{
+    height: 50px;
+}
+
 #emoji-bar{
     background-color: #D4E6F0;
     border: 2px solid #516D88;

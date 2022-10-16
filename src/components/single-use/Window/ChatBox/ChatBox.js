@@ -28,11 +28,7 @@ const ChatBox = () => {
         name: '', message: ''
     })
 
-    const ayos = [
-        "./ayos/0.png",
-        "./ayos/1.png",
-        "./ayos/2.png"
-    ];
+    const ayos = [0, 1, 2];
 
     // initialize the reducer & state for holding the messages array
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -47,26 +43,42 @@ const ChatBox = () => {
             dispatch({
                 name: m.name,
                 message: m.message,
+                ayo: m.ayo,
                 createdAt: m.createdAt
             })
         })
     }, [])
 
     // set a new message in gun, update the local state to reset the form field
-    function saveMessage() {
+    const saveMessage = () => {
+        if(formState.message.length > 0){
+            const messages = gun.get('messages')
+            messages.set({
+                name: username,
+                message: formState.message,
+                createdAt: Date.now()
+            })
+            setForm({
+                name: '', message: ''
+            })
+        }
+    }
+
+    const saveAyo = (num) => {
         const messages = gun.get('messages')
         messages.set({
             name: username,
-            message: formState.message,
+            message: null,
+            ayo: num,
             createdAt: Date.now()
         })
         setForm({
             name: '', message: ''
         })
-    }
+    };
 
     // update the form state as the user types
-    function onChange(e) {
+    const onChange = (e) => {
         setForm({ ...formState, [e.target.name]: e.target.value  })
     }
 
@@ -78,7 +90,13 @@ const ChatBox = () => {
                         <li key={message.createdAt}>
                             <span id="author">{message.name}</span>
                             <span> : </span>
-                            <span id="text">{message.message}</span>
+                            {
+                                message.message !== null ? (
+                                    <span id="text">{message.message}</span>
+                                ) : (
+                                    <img src={`./ayos/${message.ayo}.png`} alt={`Ayo-${message.ayo}`}></img>
+                                )
+                            }
                         </li>
                     ))
                 }
@@ -86,13 +104,13 @@ const ChatBox = () => {
             <div id="emoji-bar">
                     {
                         ayos.map(a => (
-                            <button key={a}>
-                                <img src={a} alt={a}></img>
+                            <button key={a} onClick={() => saveAyo(a)}>
+                                <img src={`./ayos/${a}.png`} alt={`Ayo-${a}`}></img>
                             </button>
                         ))
                     }
             </div>
-            <div id="message-input" onSubmit={saveMessage}>
+            <div id="message-input">
                 <input
                     onChange={onChange}
                     name="message"
