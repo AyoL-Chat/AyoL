@@ -1,81 +1,23 @@
-import GUN from "gun";
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useState } from "react";
 import "./ChatBox.css";
-
-// initialize gun locally
-const gun = GUN({
-    peers: [
-      "http://localhost:3030/gun"
-    ]
-  })
-  
-  // create the initial state to hold the messages
-  const initialState = {
-    messages: []
-  }
-  
-  // Create a reducer that will update the messages array
-  function reducer(state, message) {
-    return {
-      messages: [message, ...state.messages]
-    }
-  }
+import io from "socket.io-client";
 
 const ChatBox = () => {
-    const [username, setUsername] = useState("guest");
-    // the form state manages the form input for creating a new message
-    const [formState, setForm] = useState({
-        name: '', message: ''
-    })
+    const [message, setMessage] = useState("");
 
+    const messages = [];
     const ayos = [0, 1, 2];
 
-    // initialize the reducer & state for holding the messages array
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const saveAyo = () => {};
 
-    // when the app loads, fetch the current messages and load them into the state
-    // this also subscribes to new data as it changes and updates the local state
-    useEffect(() => {
-        setUsername(prompt("Enter your username"));
-        const messages = gun.get('messages');
-        console.log(messages);
-        messages.map().on(m => {
-            dispatch({
-                name: m.name,
-                message: m.message,
-                ayo: m.ayo,
-                createdAt: m.createdAt
-            })
-        })
-    }, [])
+    const onChange = () => {};
 
-    // set a new message in gun, update the local state to reset the form field
     const saveMessage = () => {
-        if(formState.message.length > 0){
-            const messages = gun.get('messages')
-            messages.set({
-                name: username,
-                message: formState.message,
-                createdAt: Date.now()
-            })
-            setForm({
-                name: '', message: ''
-            })
+        if(message !== ""){
+            socket.emit("chat message", username, window.location.pathname, message);
+            setMessage("");
         }
-    }
-
-    const saveAyo = (num) => {
-        const messages = gun.get('messages')
-        messages.set({
-            name: username,
-            message: null,
-            ayo: num,
-            createdAt: Date.now()
-        })
-        setForm({
-            name: '', message: ''
-        })
-        playSound(`./ayos/${num}.mp3`);
+        return false;
     };
 
     const playSound = (url) => {
@@ -89,16 +31,32 @@ const ChatBox = () => {
         document.body.appendChild(ourAudio);
     };
 
-    // update the form state as the user types
-    const onChange = (e) => {
-        setForm({ ...formState, [e.target.name]: e.target.value  })
-    }
+    useEffect(() => {
+        const io = new Server({
+            serveClient: false
+        });
+        let socket = io();
+        let username;
+
+        do{
+            username = prompt('Enter your name');
+        } while(username === '')
+        if(username === null){
+            username = 'guest';
+        }
+
+        socket.on('chat message', function(usr, lctn, msg){
+            if(lctn === window.location.pathname){
+                setMessages([...messages, { name: user, mesasge: msg }]);
+            }
+        });
+    }, []);
 
     return (
         <div id="chat-box">
             <ul id="message-view">
                 {
-                    state.messages.map((message) => {
+                    messages.map((message) => {
                         return (
                             <li key={message.createdAt}>
                                 <span id="author">{message.name}</span>
@@ -136,7 +94,7 @@ const ChatBox = () => {
                     onChange={onChange}
                     name="message"
                     placeholder="type here..."
-                    value={formState.message}
+                    value={message}
                 />
                 <button onClick={saveMessage}>Send</button>
             </div>
