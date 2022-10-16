@@ -2,7 +2,7 @@
 #chat-box{
     background-color: #78B2E7;
     border: 2px solid #39526E;
-    width: 500px;
+    width: 650px;
     padding: 5px;
     border-radius: 5px;
 }
@@ -15,6 +15,9 @@
     margin: 0px;
     padding: 0px;
     list-style: none;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 #message-view li{

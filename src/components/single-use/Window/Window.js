@@ -3,8 +3,7 @@ import SideMenu from "./SideMenu/SideMenu";
 import ChatBox from "./ChatBox/ChatBox";
 
 
-const Window = (props) => {
-    const { user } = props;
+const Window = () => {
 
     return (
         <div id="window">
@@ -16,8 +15,8 @@ const Window = (props) => {
                 <button id="close" onClick={() => {window.location.href = "/";}}>X</button>
             </div>
             <div id="main">
-                <ChatBox user={user} />
-                <SideMenu/>
+                <ChatBox />
+                {/*<SideMenu/>*/}
             </div>
         </div>
     );

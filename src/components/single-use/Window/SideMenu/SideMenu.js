@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import "./SideMenu.css";
 
-const SideMenu = () => {
-    let activeUsers = [];
+const SideMenu = (props) => {
+    const { user } = props;
+    let activeUsers = [user];
+
+    useEffect(() => {
+        console.log(user);
+    }, []);
 
     return (
         <div id="side-menu">
@@ -12,7 +18,7 @@ const SideMenu = () => {
                 <ul id="box">
                     {
                         activeUsers.map(user => (
-                            <li>{user.username}</li>
+                            <li>1</li>
                         ))
                     }
                 </ul>
