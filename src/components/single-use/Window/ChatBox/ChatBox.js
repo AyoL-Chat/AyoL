@@ -75,6 +75,18 @@ const ChatBox = () => {
         setForm({
             name: '', message: ''
         })
+        playSound(`./ayos/${num}.mp3`);
+    };
+
+    const playSound = (url) => {
+        const ourAudio = document.createElement('audio'); // Create a audio element using the DOM
+        ourAudio.style.display = "none"; // Hide the audio element
+        ourAudio.src = url; // Set resource to our URL
+        ourAudio.autoplay = true; // Automatically play sound
+        ourAudio.onended = function() {
+            this.remove(); // Remove when played.
+        };
+        document.body.appendChild(ourAudio);
     };
 
     // update the form state as the user types
@@ -107,6 +119,13 @@ const ChatBox = () => {
                             <button key={a} onClick={() => saveAyo(a)}>
                                 <img src={`./ayos/${a}.png`} alt={`Ayo-${a}`}></img>
                             </button>
+                        ))
+                    }
+                    {
+                        ayos.map(a => (
+                            <audio controls id={`ayo-${a}`} style={{display: "none"}}>
+                                <source src={`./ayos/${a}.mp3`} type="audio/mpeg"></source>
+                            </audio>
                         ))
                     }
             </div>
