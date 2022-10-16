@@ -98,8 +98,7 @@ const ChatBox = () => {
         <div id="chat-box">
             <ul id="message-view">
                 {
-                    state.messages.map((message, i) => {
-
+                    state.messages.map((message) => {
                         return (
                             <li key={message.createdAt}>
                                 <span id="author">{message.name}</span>

@@ -1,5 +1,4 @@
 import "./Window.css";
-import SideMenu from "./SideMenu/SideMenu";
 import ChatBox from "./ChatBox/ChatBox";
 
 
@@ -16,7 +15,6 @@ const Window = () => {
             </div>
             <div id="main">
                 <ChatBox />
-                {/*<SideMenu/>*/}
             </div>
         </div>
     );

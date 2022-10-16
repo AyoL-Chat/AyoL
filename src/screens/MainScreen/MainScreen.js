@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./MainScreen.css";
 import Window from "../../components/single-use/Window/Window";
 
