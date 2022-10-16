@@ -98,19 +98,22 @@ const ChatBox = () => {
         <div id="chat-box">
             <ul id="message-view">
                 {
-                    state.messages.map(message => (
-                        <li key={message.createdAt}>
-                            <span id="author">{message.name}</span>
-                            <span> : </span>
-                            {
-                                message.message !== null ? (
-                                    <span id="text">{message.message}</span>
-                                ) : (
-                                    <img src={`./ayos/${message.ayo}.png`} alt={`Ayo-${message.ayo}`}></img>
-                                )
-                            }
-                        </li>
-                    ))
+                    state.messages.map((message, i) => {
+
+                        return (
+                            <li key={message.createdAt}>
+                                <span id="author">{message.name}</span>
+                                <span> : </span>
+                                {
+                                    message.message !== null ? (
+                                        <span id="text">{message.message}</span>
+                                    ) : (
+                                        <img src={`./ayos/${message.ayo}.png`} alt={`Ayo-${message.ayo}`}></img>
+                                    )
+                                }
+                            </li>
+                        );
+                    })
                 }
             </ul>
             <div id="emoji-bar">
