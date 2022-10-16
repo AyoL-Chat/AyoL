@@ -3,11 +3,7 @@ import { useEffect, useState, useReducer } from "react";
 import "./ChatBox.css";
 
 // initialize gun locally
-const gun = GUN({
-    peers: [
-      "https://ayo-chat.github.io"
-    ]
-  })
+const gun = GUN()
   
   // create the initial state to hold the messages
   const initialState = {
